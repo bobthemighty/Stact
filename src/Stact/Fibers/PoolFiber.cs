@@ -48,7 +48,9 @@ namespace Stact
 		public void Add(Action operation)
 		{
 			if (_shuttingDown)
-				throw new FiberException("The fiber is no longer accepting actions");
+				return;
+				// seems to be causing more problems that it solves
+				// throw new FiberException("The fiber is no longer accepting actions");
 
 			lock (_lock)
 			{
